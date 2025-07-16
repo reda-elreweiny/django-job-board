@@ -1,0 +1,39 @@
+    .admin-card {
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 25px;
+        transition: 0.3s ease;
+        min-height: 230px;
+    }
+
+    .admin-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-applications {
+        background: linear-gradient(135deg, #007bff, #3399ff);
+    }
+
+    .card-manage {
+        background: linear-gradient(135deg, #6f42c1, #9b59b6);
+    }
+
+    .card-add {
+        background: linear-gradient(135deg, #28a745, #5cd65c);
+    }
+
+    .card-view {
+        background: linear-gradient(135deg, #fd7e14, #f39c12);
+    }
+
+    .admin-card .btn {
+        background-color: #fff;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .admin-card .btn:hover {
+        background-color: #f8f9fa;
+    }

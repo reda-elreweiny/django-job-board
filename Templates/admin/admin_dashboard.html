@@ -1,0 +1,175 @@
+<!-- admin_dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <title>Admin Dashboard</title>
+    {% load static %}
+    <link href="{% static 'css/owlcarouselmin.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/googleapis.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet"/>
+
+    <style>
+        .admin-card {
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s ease;
+            min-height: 230px;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-applications {
+            background: linear-gradient(135deg, #007bff, #3399ff);
+        }
+
+        .card-manage {
+            background: linear-gradient(135deg, #6f42c1, #9b59b6);
+        }
+
+        .card-add {
+            background: linear-gradient(135deg, #28a745, #5cd65c);
+        }
+
+        .card-view {
+            background: linear-gradient(135deg, #fd7e14, #f39c12);
+        }
+
+        .admin-card .btn {
+            background-color: #fff;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .admin-card .btn:hover {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body class="sub_page">
+<div class="hero_area">
+    <!-- header section starts -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                <a class="navbar-brand mr-5" href="/">
+                    <img alt="" src="{% static 'images/logo.png'%}">
+                    <span>Rawan</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'admin_dashboard' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                        <form class="form-inline">
+                            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+</div>
+
+<!-- Admin Dashboard Section -->
+<section class="contact_section layout_padding">
+    <div class="container">
+        <div class="heading_container text-center mb-5">
+            <h2>Admin Dashboard</h2>
+        </div>
+        <div class="heading_container text-center mb-5">
+            <p>Manage all your platform features from one place</p>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card text-center p-4 admin-card card-applications">
+                    <h5 class="card-title">Display Applications</h5>
+                    <p class="card-text">View all job applications submitted.</p>
+                    <a href="{% url 'my_applications' %}" class="btn mt-3">Applications List</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card text-center p-4 admin-card card-manage">
+                    <h5 class="card-title">Manage Applications</h5>
+                    <p class="card-text">Edit and review application statuses.</p>
+                    <a href="{% url 'applications' %}" class="btn mt-3">Manage Applications</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card text-center p-4 admin-card card-view">
+                    <h5 class="card-title">Manage Posts</h5>
+                    <p class="card-text">View, edit, and delete blog posts.</p>
+                    <a href="{% url 'dashboard_posts' %}" class="btn mt-3">Manage Posts</a>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card text-center p-4 admin-card card-add">
+                    <h5 class="card-title">Add New Post</h5>
+                    <p class="card-text">Write and publish new content.</p>
+                    <a href="{% url 'add_post' %}" class="btn mt-3">Add Post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- info section -->
+<section class="info_section layout_padding">
+    <div class="footer_contact">
+        <div class="heading_container">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="box">
+            <a class="img-box" href="">
+                <img alt="" class="img-1" src="{% static 'images/location.png' %}">
+                <img alt="" class="img-2" src="{% static 'images/location-o.png' %}">
+            </a>
+            <a class="img-box" href="">
+                <img alt="" class="img-1" src="{% static 'images/call.png' %}">
+                <img alt="" class="img-2" src="{% static 'images/call-o.png' %}">
+            </a>
+            <a class="img-box" href="">
+                <img alt="" class="img-1" src="{% static 'images/envelope.png' %}">
+                <img alt="" class="img-2" src="{% static 'images/envelope-o.png' %}">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- footer section -->
+<section class="container-fluid footer_section">
+    <p>
+        Copyright &copy; 2025 All Rights Reserved By
+        <a href="#">Reda Elrewiny</a>
+    </p>
+</section>
+
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>

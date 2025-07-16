@@ -1,0 +1,33 @@
+.job-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.job-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+.job-card h3 {
+    margin-top: 0;
+    color: #1e3a8a;
+}
+
+.job-card p {
+    margin: 5px 0;
+    color: #444;
+}
+
+.job-meta {
+    font-size: 14px;
+    color: #888;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!-- Mobile Metas -->
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <!-- Site Metas -->
+    <meta content="" name="keywords"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <title>Blogs And Posts</title>
+    {% load static %}
+    <!-- slider stylesheet -->
+    <link href="{% static 'css/owlcarouselmin.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/googleapis.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet"/>
+
+    <style>
+        .blog-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-title a {
+            color: #343a40;
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .blog-title a:hover {
+            color: #007bff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="sub_page">
+<div class="hero_area">
+    <!-- header section starts -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                <a class="navbar-brand mr-5" href="/">
+                    <img alt="" src="{% static 'images/logo.png'%}">
+                    <span>Rawan</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}">Register</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline">
+                            <button class="btn my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+</div>
+
+<!-- blog section -->
+<section class="contact_section">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Blogs .. The Place Where You Can Share Thoughts!
+            </h2>
+        </div>
+    </div>
+
+    <div class="container contact_bg layout_padding2-top">
+        <div class="row">
+            {% block content %}
+            {% for post in posts %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm blog-card">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}"
+                         style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title blog-title">
+                            <a href="{% url 'blog_details' post.id %}">
+                                {{ post.title }}
+                            </a>
+                        </h5>
+                        <p class="card-text text-muted mb-2" style="font-size: 0.9rem;">
+                            {{ post.content|truncatewords:25 }}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">By {{ post.author.username }}</small>
+                            <small class="text-muted">{{ post.created_at|date:"M d, Y" }}</small>
+                        </div>
+                        <span class="badge badge-info mt-2">{{ post.category.name }}</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p>No posts available.</p>
+            </div>
+            {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+</section>
+<!-- end blog section -->
+
+<!-- info section -->
+<section class="info_section layout_padding">
+    <div class="footer_contact">
+        <div class="heading_container">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="box">
+            <a class="img-box" href="">
+                <img class="img-1" src="{% static 'images/location.png' %}" alt="">
+                <img class="img-2" src="{% static 'images/location-o.png' %}" alt="">
+            </a>
+            <a class="img-box" href="">
+                <img class="img-1" src="{% static 'images/call.png' %}" alt="">
+                <img class="img-2" src="{% static 'images/call-o.png' %}" alt="">
+            </a>
+            <a class="img-box" href="">
+                <img class="img-1" src="{% static 'images/envelope.png' %}" alt="">
+                <img class="img-2" src="{% static 'images/envelope-o.png' %}" alt="">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- footer section -->
+<section class="container-fluid footer_section">
+    <p>
+        Copyright &copy; 2025 All Rights Reserved By
+        <a href="#">Reda Elrewiny</a>
+    </p>
+</section>
+
+<!-- scripts -->
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+</html>

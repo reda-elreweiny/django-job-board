@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <!-- Mobile Metas -->
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+    <!-- Site Metas -->
+    <meta content="" name="keywords"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <title>Admin Add Blogs</title>
+    {% load static %}
+    <link href="{% static 'css/owlcarouselmin.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'css/googleapis.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet"/>
+
+    <style>
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-control,
+        select {
+            margin-bottom: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="sub_page">
+<div class="hero_area">
+    <!-- header section starts -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+                <a class="navbar-brand mr-5" href="/">
+                    <img alt="" src="{% static 'images/logo.png'%}">
+                    <span>Rawan</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'admin_dashboard' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            {% if not user.is_authenticated %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">My Account</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ user.username }}</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'profile' %}">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'my_applications' %}">My Applications</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+</div>
+
+<!-- blog form section -->
+<section class="contact_section">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Create Blogs !!</h2>
+        </div>
+    </div>
+
+    <div class="container contact_bg layout_padding2-top">
+        {% block content %}
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="form-container mt-4">
+                    <h2>Add New Blog Post</h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success btn-submit">Save Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+</section>
+
+<!-- info section -->
+<section class="info_section layout_padding">
+    <div class="footer_contact">
+        <div class="heading_container">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="box">
+            <a class="img-box" href="">
+                <img alt="" class="img-1" src="{% static 'images/location.png' %}">
+                <img alt="" class="img-2" src="{% static 'images/location-o.png' %}">
+            </a>
+            <a class="img-box" href="">
+                <img alt="" class="img-1" src="{% static 'images/call.png' %}">
+                <img alt="" class="img-2" src="{% static 'images/call-o.png' %}">
+            </a>
+            <a class="img-box" href="">
+                <img alt="" class="img-1" src="{% static 'images/envelope.png' %}">
+                <img alt="" class="img-2" src="{% static 'images/envelope-o.png' %}">
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- footer section -->
+<section class="container-fluid footer_section">
+    <p>
+        Copyright &copy; 2025 All Rights Reserved By
+        <a href="#">Reda Elrewiny</a>
+    </p>
+</section>
+
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+
+</html>
